@@ -44,10 +44,9 @@ class Cita(db.Model):
             'updated_at': self.updated_at.isoformat() if self.updated_at else None
         }
 
-# Crear tablas (solo si no estamos en modo testing)
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
+# Crear tablas automáticamente al iniciar
+with app.app_context():
+    db.create_all()
 
 @app.route('/health', methods=['GET'])
 def health():
